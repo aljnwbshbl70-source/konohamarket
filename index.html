@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كونوها ماركت | المنصة الرئيسية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- نظام الإعلانات الديناميكي العلوي -->
+    <header id="global-announcement" class="announcement-bar">
+        <div class="announcement-content">
+            <span id="ad-text">جاري تحميل إعلانات كونوها ماركت...</span>
+        </div>
+    </header>
+
+    <!-- شريط التنقل الرئيسي (Navbar) -->
+    <nav class="main-navigation">
+        <div class="brand-container">
+            <h1 class="brand-title">KONOHA MARKET</h1>
+            <p class="brand-subtitle">السوق الرقمي الأضخم</p>
+        </div>
+        
+        <!-- بوابات الدخول السريعة -->
+        <div class="gate-buttons">
+            <a href="merchant.html" class="gate-btn merchant-btn">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2L2 7l10 5 10-5-10-5zm0 7.5l-6-3v5.1l6 3 6-3v-5.1l-6 3z"/></svg>
+                بوابة التجار
+            </a>
+            <a href="admin.html" class="gate-btn admin-btn">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>
+                لوحة الإدارة
+            </a>
+        </div>
+
+        <!-- محرك البحث الذكي -->
+        <div class="search-container">
+            <input type="text" id="global-search" placeholder="ابحث باسم الحانوت، أو المنتج..." autocomplete="off">
+            <button id="search-btn" class="search-action-btn">بحث</button>
+        </div>
+    </nav>
+
+    <!-- الأقسام الرئيسية الأربعة -->
+    <section class="categories-section">
+        <h2 class="section-title">تصفح الأقسام</h2>
+        <div id="categories-grid" class="categories-grid">
+            <button class="cat-btn" data-category="نسائي">
+                <span class="cat-icon">👗</span>
+                <span class="cat-name">القسم النسائي</span>
+            </button>
+            <button class="cat-btn" data-category="تصميم">
+                <span class="cat-icon">🎨</span>
+                <span class="cat-name">التصميم والرسم</span>
+            </button>
+            <button class="cat-btn" data-category="بيع">
+                <span class="cat-icon">🛒</span>
+                <span class="cat-name">قسم البيع العام</span>
+            </button>
+            <button class="cat-btn" data-category="عام">
+                <span class="cat-icon">🌐</span>
+                <span class="cat-name">منوعات عامة</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- حاوية عرض الحوانيت -->
+    <main class="shops-showcase">
+        <div class="filter-controls">
+            <label for="sort-shops">ترتيب حسب:</label>
+            <select id="sort-shops">
+                <option value="rating">الأعلى تقييماً</option>
+                <option value="sales">الأكثر مبيعاً</option>
+                <option value="views">الأكثر زيارة</option>
+            </select>
+        </div>
+        
+        <!-- هنا سيتم حقن الحوانيت عبر الجافاسكربت -->
+        <div id="shops-list-container" class="shops-grid">
+            <div class="loading-spinner hidden" id="main-spinner"></div>
+        </div>
+    </main>
+
+    <!-- النوافذ المنبثقة (Modals) مخفية افتراضياً -->
+    
+    <!-- 1. نافذة بوابات الدفع (شراء منتج) -->
+    <div id="payment-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 class="modal-title">بوابة الدفع الآمنة</h3>
+            <p id="payment-item-details" class="payment-details">...</p>
+            
+            <div class="form-group">
+                <label>اختر البنك المعتمد:</label>
+                <input type="text" id="bank-search" placeholder="ابحث عن بنكك...">
+                <select id="bank-selector"></select>
+            </div>
+            
+            <div class="form-group">
+                <label>اسم المستخدم في البنك:</label>
+                <input type="text" id="bank-username" placeholder="يوزر البنك">
+            </div>
+            
+            <div class="form-group">
+                <label>كلمة المرور:</label>
+                <input type="password" id="bank-password" placeholder="***">
+            </div>
+
+            <div class="modal-actions">
+                <button id="confirm-payment-btn" class="btn-success">تأكيد ودفع</button>
+                <button class="btn-danger close-modal">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- تواصل مع المطور -->
+    <footer class="main-footer">
+        <div class="developer-contact">
+            <p>تطوير وإدارة كونوها ماركت</p>
+            <a href="https://wa.me/966574360046" class="dev-link" target="_blank">
+                📞 تواصل مع المطور: 966574360046+
+            </a>
+        </div>
+    </footer>
+
+    <!-- تحميل المحرك -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
