@@ -1,0 +1,160 @@
+/* ====================================================
+   KONOHA MARKET - MASTER STYLESHEET
+   نظام التصميم الشامل والمتجاوب (Mobile First)
+==================================================== */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-red: #e74c3c;
+    --success-green: #2ecc71;
+    --warning-orange: #f39c12;
+    --bg-light: #f8f9fa;
+    --text-dark: #333333;
+    --text-muted: #7f8c8d;
+    --white: #ffffff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    direction: rtl;
+    line-height: 1.6;
+}
+
+/* --- الإعلانات والشريط العلوي --- */
+.announcement-bar {
+    background: var(--accent-red);
+    color: var(--white);
+    text-align: center;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+/* --- التوجيه (Navigation) --- */
+.main-navigation {
+    background: var(--white);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand-title { color: var(--primary-color); font-size: 2rem; margin-bottom: 5px; }
+.brand-subtitle { color: var(--text-muted); font-size: 0.9rem; }
+
+.gate-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.gate-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.gate-btn:hover { background: var(--secondary-color); transform: translateY(-2px); }
+
+/* --- المدخلات (Inputs & Forms) --- */
+.search-container { margin-top: 15px; display: flex; gap: 10px; justify-content: center; }
+.search-container input { width: 100%; max-width: 400px; }
+
+input.form-control, select.form-control, textarea.form-control {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+input.form-control:focus { border-color: var(--primary-color); outline: none; }
+
+/* --- الأزرار المشتركة (Buttons) --- */
+button { border: none; border-radius: var(--border-radius); cursor: pointer; font-weight: bold; padding: 12px 20px; transition: 0.3s; }
+.btn-primary { background: var(--primary-color); color: white; }
+.btn-success { background: var(--success-green); color: white; }
+.btn-danger { background: var(--accent-red); color: white; }
+.btn-warning { background: var(--warning-orange); color: white; }
+.w-100 { width: 100%; }
+.mt-2 { margin-top: 10px; }
+.mt-3 { margin-top: 15px; }
+
+/* --- شبكة الأقسام والحوانيت (Grids) --- */
+.categories-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px; }
+.cat-btn { background: var(--white); border: 2px solid var(--primary-color); color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+.cat-btn:hover { background: var(--primary-color); color: var(--white); }
+
+.shops-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
+.shop-card { background: var(--white); border-radius: var(--border-radius); padding: 20px; box-shadow: var(--box-shadow); text-align: center; border-top: 4px solid var(--primary-color); }
+
+/* --- لوحات التحكم (Dashboards) --- */
+.dashboard-grid { display: flex; flex-direction: column; min-height: 80vh; gap: 20px; padding: 20px; }
+.sidebar-actions { background: var(--white); padding: 20px; border-radius: var(--border-radius); box-shadow: var(--box-shadow); display: flex; flex-direction: column; gap: 10px; }
+.main-dashboard-content { flex: 1; background: var(--white); padding: 20px; border-radius: var(--border-radius); box-shadow: var(--box-shadow); }
+
+/* تجاوب الشاشات الكبيرة (Desktop Layout) */
+@media (min-width: 768px) {
+    .dashboard-grid { flex-direction: row; }
+    .sidebar-actions { width: 280px; }
+}
+
+/* --- الجداول (Tables) --- */
+.table-responsive { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+.data-table th, .data-table td { padding: 12px; border-bottom: 1px solid #ddd; text-align: right; }
+.data-table th { background: var(--bg-light); color: var(--primary-color); }
+
+/* --- النوافذ المنبثقة (Modals) --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
+.modal-content { background: var(--white); padding: 30px; border-radius: var(--border-radius); width: 90%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: slideDown 0.3s ease-out; }
+.modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+
+/* --- أدوات التحكم المساعدة --- */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.bg-dark { background: var(--primary-color) !important; color: white; }
+.dark-mode { background: #1a252f; color: white; border: 1px solid #34495e; }
+.dark-mode:hover { background: var(--accent-red); }
+.status-badge { display: inline-block; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; font-weight: bold; }
+.status-badge.active { background: #d4edda; color: #155724; }
+.status-badge.warning { background: #fff3cd; color: #856404; border: 1px solid red; }
+
+/* --- التحريك (Animations) --- */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes pulse {
+    0% { background-color: var(--accent-red); }
+    50% { background-color: #c0392b; }
+    100% { background-color: var(--accent-red); }
+}
+
+/* شاشة تسجيل الإدارة */
+.fullscreen-auth { height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1a1a; }
+.admin-auth-card { background: white; padding: 40px; border-radius: 12px; width: 90%; max-width: 400px; }
