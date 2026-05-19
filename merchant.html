@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة التجار | كونوها ماركت</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="merchant-bg">
+    <!-- شريط الإشعارات الخاص بالتجار -->
+    <header class="admin-header">
+        <div class="header-content">
+            <h2>بوابة التجار - مركز إدارة الأعمال</h2>
+            <a href="index.html" class="back-link">العودة للسوق 🏠</a>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- 1. قسم تسجيل الدخول / إنشاء حانوت -->
+        <section id="merchant-auth-section" class="auth-card">
+            <div class="auth-header">
+                <h3>تسجيل الدخول البنكي</h3>
+                <p>يرجى إدخال بيانات البنك المعتمد للوصول لحانوتك</p>
+            </div>
+            
+            <div class="form-group">
+                <label>اختر البنك المعتمد:</label>
+                <!-- مثال: BANK HYZAL أو غيره من البنوك المعتمدة -->
+                <input type="text" id="m-bank-name" placeholder="ابحث عن البنك..." autocomplete="off">
+            </div>
+            
+            <div class="form-group">
+                <label>اسم المستخدم:</label>
+                <input type="text" id="m-username" placeholder="يوزر الحساب البنكي">
+            </div>
+            
+            <div class="form-group">
+                <label>كلمة المرور:</label>
+                <input type="password" id="m-password" placeholder="***">
+            </div>
+
+            <button id="merchant-login-btn" class="btn-primary w-100" onclick="window.merchantLogin()">دخول / فتح حانوت جديد</button>
+            
+            <div id="auth-alert" class="alert hidden"></div>
+        </section>
+
+        <!-- 2. لوحة تحكم التاجر (مخفية حتى تسجيل الدخول) -->
+        <section id="merchant-dashboard" class="dashboard-grid hidden">
+            <!-- الشريط الجانبي للإجراءات السريعة -->
+            <aside class="sidebar-actions">
+                <div class="profile-summary">
+                    <h3 id="shop-name-display">اسم الحانوت</h3>
+                    <p id="shop-status-badge" class="status-badge active">نشط</p>
+                </div>
+                
+                <button class="btn-action" onclick="window.openModal('add-product-modal')">➕ إضافة منتج جديد</button>
+                <button class="btn-action" onclick="window.openModal('add-category-modal')">📁 إضافة قسم للحانوت</button>
+                <button class="btn-warning" onclick="window.openModal('edit-shop-modal')">⚙️ تعديل بيانات الحانوت</button>
+                <button class="btn-danger mt-auto" onclick="window.merchantLogout()">تسجيل الخروج</button>
+            </aside>
+
+            <!-- منطقة عرض البيانات (الإحصائيات والطلبات) -->
+            <div class="main-dashboard-content">
+                <!-- بطاقات الإحصائيات -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <span class="stat-icon">💰</span>
+                        <h4>المبيعات</h4>
+                        <p id="stat-sales">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">👀</span>
+                        <h4>الزيارات</h4>
+                        <p id="stat-views">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">⭐</span>
+                        <h4>التقييم العام</h4>
+                        <p id="stat-rating">5.0</p>
+                    </div>
+                </div>
+
+                <!-- جدول الطلبات الواردة -->
+                <div class="orders-section">
+                    <h3>الطلبات الأخيرة</h3>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>رقم الطلب</th>
+                                    <th>المنتج</th>
+                                    <th>السعر</th>
+                                    <th>رقم العميل</th>
+                                    <th>إجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table-body">
+                                <!-- تملأ عبر app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- النوافذ المنبثقة للتجار (إضافة منتج، إضافة قسم) -->
+    <div id="add-product-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>إضافة منتج جديد</h3>
+            <p class="text-muted">تذكر: الحد الأدنى للسعر هو 10,000</p>
+            <input type="text" id="prod-name" class="form-control" placeholder="اسم المنتج">
+            <select id="prod-category" class="form-control">
+                <option value="">اختر القسم الفرعي...</option>
+                <!-- خيارات الأقسام تُجلب ديناميكياً -->
+            </select>
+            <textarea id="prod-desc" class="form-control" placeholder="وصف المنتج الدقيق..." rows="3"></textarea>
+            <input type="number" id="prod-price" class="form-control" placeholder="السعر (أعلى من 10000)">
+            
+            <div class="modal-actions">
+                <button class="btn-success" onclick="window.saveProduct()">حفظ ونشر</button>
+                <button class="btn-danger" onclick="window.closeModal('add-product-modal')">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- سكريبت المحرك -->
+    <script type="module" src="app.js"></script>
+</body>
+  </html>
+              
